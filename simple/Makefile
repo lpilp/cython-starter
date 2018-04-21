@@ -1,7 +1,7 @@
 .PHONY: clean all
 
 pyfiles=$(shell ls *.py)
-exclude_python := app.py __init__.py
+exclude_python := app.py 
 sofiles=$(filter-out $(exclude_python),$(pyfiles))
 
 ifndef package
@@ -10,7 +10,6 @@ endif
 
 all : build
 	mkdir -p $(package)
-	cp __init__.py $(package)
 	cp *.so $(package)
 	cp app $(package)
 
