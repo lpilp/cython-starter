@@ -12,10 +12,10 @@
 
 ```
 $ source tools/init.sh
-$ cython-tools init
-$ cython-tools make simple
-$ cd simple 
+$ cython-tools -a init -t simple -d hello
+$ cd hello
 $ make
+$ ./app
 ```
 
 

@@ -1,3 +1,35 @@
 #!/bin/bash
 
 
+function init(){
+	TPL=$1
+	DIR=$2
+	mkdir -p "$2"
+	cd $2
+	for f in Makefile app.py lib.py 
+	do
+		wget "https://raw.githubusercontent.com/qixingyue/cython-starter/master/$TPL/$f"
+	done
+	echo "done"
+}
+
+
+while getopts 'a:t:d:h' OPT; do
+    case $OPT in
+        a)
+            ACTION="$OPTARG";;
+        t)
+            TPL="$OPTARG";;
+        d)
+			DIRPUT="$OPTARG";;
+        h)
+            echo "Usage: `basename $0` [options] filename"
+            echo "-a action to do! <init>"
+            echo "-t tpl you want to init"
+            echo "-d dir you want to make"
+			exit 1
+    esac
+done
+
+$ACTION $TPL $DIRPUT
+
